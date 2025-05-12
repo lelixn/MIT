@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-black text-beige">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIT | GIT Commands</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('bg-white');
+      html.classList.toggle('bg-black');
+      document.querySelectorAll('.text-white, .text-black').forEach(el => {
+        el.classList.toggle('text-green-200');
+        // el.classList.toggle('text-');
+      });
+    }
+
+    function copyCommand(btn) {
+      const code = btn.previousElementSibling.textContent;
+      navigator.clipboard.writeText(code);
+      btn.textContent = '✅ Copied';
+      setTimeout(() => btn.textContent = '📋 Copy', 1000);
+    }
+
+    function filterCommands() {
+      const term = document.getElementById('search').value.toLowerCase();
+      document.querySelectorAll('.command-block').forEach(block => {
+        const text = block.innerText.toLowerCase();
+        block.style.display = text.includes(term) ? 'block' : 'none';
+      });
+    }
+  </script>
+  <style>
+    body {
+      background: url('bg3.jpg') ;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-6">
+  <div class="bg-black/80 text-white p-6 rounded-2xl shadow-xl max-w-6xl w-full">
+    <div class="flex justify-between items-center mb-4">
+      <div class="flex items-center space-x-2">
+        <img src="poke.png" alt="Logo" class="h-10">
+        <h1 class="text-3xl font-mono"> Mit</h1>
+      </div>
+      <button onclick="toggleTheme()" class="text-sm bg-gray-700 px-3 py-1 rounded-2xl hover:bg-gray-700">🌓 Toggle Theme</button>
+    </div>
+    <input id="search" oninput="filterCommands()" type="text" placeholder="🔍 Search command..." class="mb-6 p-2 w-full rounded-2xl bg-gray-800 text-white placeholder-gray-400">
+
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono">
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">🔧 Setup</h2>
+        <pre class="mb-1">git config --global user.name "Your Name"</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git config --global user.email "you@example.com"</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">📁 Repository</h2>
+        <pre class="mb-1">git init</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git clone &lt;url&gt;</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">🌿 Branching</h2>
+        <pre class="mb-1">git branch</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git checkout -b branch-name</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git merge branch-name</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">📝 Staging & Commit</h2>
+        <pre class="mb-1">git add .</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git commit -m "your message"</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">📤 Push & Pull</h2>
+        <pre class="mb-1">git push origin branch-name</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git pull origin branch-name</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">🛠️ Others</h2>
+        <pre class="mb-1">git status</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git log</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git remote -v</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">🔄 Undo & Reset</h2>
+        <pre class="mb-1">git reset --soft HEAD~1</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git reset --hard HEAD~1</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git checkout -- file</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">🎯 Tagging</h2>
+        <pre class="mb-1">git tag v1.0</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git tag -a v1.0 -m "message"</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git push origin v1.0</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">📌 Stash</h2>
+        <pre class="mb-1">git stash</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git stash pop</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">🚚 Rebase & Cherry-pick</h2>
+        <pre class="mb-1">git rebase branch-name</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git cherry-pick commit-hash</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+
+      <div class="command-block bg-gray-900 p-4 rounded-xl shadow">
+        <h2 class="text-lg font-bold mb-2">🌍 Remote Repository</h2>
+        <pre class="mb-1">git remote add origin &lt;url&gt;</pre><button onclick="copyCommand(this)">📋 Copy</button>
+        <pre class="mt-2 mb-1">git remote remove origin</pre><button onclick="copyCommand(this)">📋 Copy</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
