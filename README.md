@@ -60,14 +60,4 @@ Aspiring Full Stack Developer & Creative Technologist
 
 ---
 
-## 🏁 Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## 📄 License
-
-MIT License. Use it freely for learning and creating!
-
 > Made with ❤️ by Lelien Panda
