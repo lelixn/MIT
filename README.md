@@ -1,4 +1,4 @@
-                          # MIT👾
+  # MIT👾
 
 Showcases GitHub commands with an elegant animated UI
 
